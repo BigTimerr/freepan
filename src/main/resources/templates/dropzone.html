@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>Dropzone</title>
+
+  <!--dropzone css-->
+  <link href="js/dropzone/css/dropzone.css" rel="stylesheet"/>
+
+  <!--common css-->
+    <div th:include="common :: commonheader"></div>
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!-- left side start-->
+    <div th:replace="common :: leftmenu"></div>
+    <!-- left side end-->
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <div th:replace="common :: headermenu"></div>
+        <!-- header section end-->
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                文件上传
+            </h3>
+
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+
+            <section class="panel">
+                <header class="panel-heading">
+                    选择文件上传
+                    <br />
+                    <label style="color: red" th:text="${msg}"></label>
+                    <span class="tools pull-right">
+                        <a class="fa fa-chevron-down" href="javascript:;"></a>
+                        <a class="fa fa-times" href="javascript:;"></a>
+                     </span>
+                </header>
+                <div class="panel-body">
+                    <form role="form" th:action="@{/upload}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label >多个文件</label>
+                            <input type="file" name="files" multiple >
+                        </div>
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </form>
+                </div>
+
+
+            </section>
+
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        <div th:replace="common :: footermenu"></div>
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<div th:include="common :: commonscript"></div>
+
+<!--dropzone-->
+<script src="js/dropzone/dropzone.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="commonheader">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- 响应式样式 -->
+    <link href="css/style-responsive.css" rel="stylesheet">
+
+    <!-- js IE8支持HTML5元素和媒体查询 IE 兼容脚本 -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+</head>
+<body>
+
+    <!-- left side start-->
+    <div class="left-side sticky-left-side" th:fragment="leftmenu">
+
+        <!--logo and iconic logo start-->
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt=""></a>
+        </div>
+
+        <div class="logo-icon text-center">
+            <a href="index.html"><img src="images/logo_icon.png" alt=""></a>
+        </div>
+        <!--logo and iconic logo end-->
+
+        <div class="left-side-inner">
+
+            <!-- visible to small devices only -->
+            <div class="visible-xs hidden-sm hidden-md hidden-lg">
+                <div class="media logged-user">
+                    <img alt="" src="images/photos/user-avatar.png" class="media-object">
+                    <div class="media-body">
+                        <h4><a href="#">John Doe</a></h4>
+                        <span>"Hello There..."</span>
+                    </div>
+                </div>
+
+                <h5 class="left-nav-title">Account Information</h5>
+                <ul class="nav nav-pills nav-stacked custom-nav">
+                    <li><a href="#"><i class="fa fa-user"></i> <span>Profile</span></a></li>
+                    <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
+                    <li><a href="#"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
+                </ul>
+            </div>
+
+            <!--sidebar nav start-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+                <li class="menu-list nav-active"><a href="index.html"><i class="fa fa-home"></i> <span>主页</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a th:href="@{/main.html}"> 主页</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="menu-list"><a href="#"><i class="fa fa-th-list"></i> <span>用户表</span></a>
+                    <ul class="sub-menu-list">
+<!--                        <li><a th:href="@{/basic_table}"> Basic Table</a></li>-->
+                        <li><a th:href="@{/user_table}"> 所有用户</a></li>
+<!--                        <li><a th:href="@{/responsive_table}"> Responsive Table</a></li>-->
+<!--                        <li><a th:href="@{/editable_table}"> Edit Table</a></li>-->
+                    </ul>
+                </li>
+                <li class="menu-list nav-active"><a href=""><i class="fa fa-tasks"></i> <span>上传文件</span></a>
+                    <ul class="sub-menu-list">
+                        <li class="active"><a th:href="@{/dropzone}">上传文件</a></li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a th:href="@{/logout}" href="login.html"><i class="fa fa-sign-in"></i> <span>Login Page</span></a>
+                </li>
+
+            </ul>
+            <!--sidebar nav end-->
+
+        </div>
+    </div>
+    <!-- left side end-->
+
+    <!-- 头部分开始-->
+    <div class="header-section" th:fragment="headermenu">
+
+        <!--开关按钮开始-->
+        <a class="toggle-btn">
+            <i class="fa fa-bars"></i>
+        </a>
+        <!--开关按钮结束-->
+
+        <!--通知菜单开始 -->
+        <div class="menu-right">
+            <ul class="notification-menu">
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <img src="images/photos/user-avatar.png" alt="" />
+                        [[${session.loginUser.username}]]
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                        <li>
+                            <a th:href="@{/main.html}">
+                                <i  class="fa fa-user"></i>
+                                用户信息
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-cog"></i>
+                                设置
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/logout}">
+                                <i  class="fa fa-sign-out"></i>
+                                登出
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+        <!--通知菜单结束 --> </div>
+
+
+    <!-- 头部分结束-->
+
+    <!--footer section start-->
+    <footer th:fragment="footermenu">
+        到底了
+    </footer>
+    <!--footer section end-->
+
+
+
+    <div th:fragment="commonscript">
+        <!-- Placed js at the end of the document so the pages load faster -->
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+        <script src="js/jquery-migrate-1.2.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/modernizr.min.js"></script>
+        <script src="js/jquery.nicescroll.js"></script>
+        <!--common scripts for all pages-->
+        <script src="js/scripts.js"></script>
+    </div>
+
+</body>
+</html>
