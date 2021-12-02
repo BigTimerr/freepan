@@ -33,7 +33,7 @@
         <!-- page heading start-->
         <div class="page-heading">
             <h3>
-                文件上传
+                共享空间文件上传
             </h3>
 
         </div>
@@ -53,7 +53,7 @@
                      </span>
                 </header>
                 <div class="panel-body">
-                    <form role="form" th:action="@{/uploadShareFile}" method="post" enctype="multipart/form-data">
+                    <form role="form" th:action="@{/ploughshare}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label >多个文件</label>
                             <input type="file" name="files" multiple >

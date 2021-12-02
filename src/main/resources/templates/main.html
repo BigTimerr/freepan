@@ -112,7 +112,6 @@
                     <section class="panel">
                         <header class="panel-heading">
                             用户表
-
                             <span class="tools pull-right">
                 <a href="javascript:;" class="fa fa-chevron-down"></a>
                 <a href="javascript:;" class="fa fa-times"></a>
@@ -134,7 +133,7 @@
                                     <tbody>
                                     <tr class="gradeX"  th:each="userFile,stat:${userFileList}">
                                         <td th:text="${stat.count}">#</td>
-                                        <td th:text="${userFile.username}">name</td>
+                                        <td th:text="${userFile.username}">username</td>
                                         <td th:text="${userFile.filename}">eamil</td>
                                         <td th:text="${userFile.size}">备用1</td>
                                         <td>备用2</td>

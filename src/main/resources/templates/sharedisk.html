@@ -112,7 +112,7 @@
                     <section class="panel">
                         <header class="panel-heading">
                             用户表
-
+                            <label style="color: red" th:text="${msg}"></label>
                             <span class="tools pull-right">
                 <a href="javascript:;" class="fa fa-chevron-down"></a>
                 <a href="javascript:;" class="fa fa-times"></a>
@@ -134,13 +134,15 @@
                                     <tbody>
                                     <tr class="gradeX"  th:each="userFile,stat:${filelist}">
                                         <td th:text="${stat.count}">#</td>
-                                        <td th:text="${userFile.username}">name</td>
-                                        <td th:text="${userFile.filename}">eamil</td>
-                                        <td th:text="${userFile.size}">备用1</td>
+                                        <td th:text="${userFile.username}">username</td>
+                                        <td th:text="${userFile.filename}">filenam</td>
+                                        <td th:text="${userFile.size}">size</td>
                                         <td>备用2</td>
                                         <td>
 
 <!--                                            <a th:href="@{/userFile/delete/{id}(id = ${userFile.id})}" class="btn btn-danger btn-sm" type="button">删除</a>-->
+                                            <a th:href="@{/sharediskfiles/delete/{id}(id = ${userFile.id})}" class="btn btn-danger btn-sm" type="button">删除</a>
+
                                         </td>
                                     </tr>
 
