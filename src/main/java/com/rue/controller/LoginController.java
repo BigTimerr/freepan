@@ -119,6 +119,11 @@ public class LoginController {
     }
 
 
+    @GetMapping("/uploadShare")
+    public String uploadShare(){
+        return "uploadShareFile";
+    }
+
 
     //退出登录
     //登录页

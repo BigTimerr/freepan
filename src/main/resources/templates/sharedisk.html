@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="keywords" content="admin, dashboard, bootstrap, template, flat, modern, theme, responsive, fluid, retina, backend, html5, css, css3">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>AdminX</title>
+
+  <!--icheck-->
+  <link href="js/iCheck/skins/minimal/minimal.css" rel="stylesheet">
+  <link href="js/iCheck/skins/square/square.css" rel="stylesheet">
+  <link href="js/iCheck/skins/square/red.css" rel="stylesheet">
+  <link href="js/iCheck/skins/square/blue.css" rel="stylesheet">
+
+  <!--dashboard calendar-->
+  <link href="css/clndr.css" rel="stylesheet">
+
+  <div th:include="common :: commonheader"></div>
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!-- left side start-->
+    <div th:replace="common :: leftmenu"></div>
+    <!-- left side end-->
+
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- 头部分开始-->
+        <div th:replace="common :: headermenu"></div>
+        <!-- 头部分结束-->
+
+
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+            <div class="row states-info">
+            <div class="col-md-3">
+                <div class="panel red-bg">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <i class="fa fa-money"></i>
+                            </div>
+                            <div class="col-xs-8">
+                                <span class="state-title"> 云盘总空间 </span>
+                                <h4>[[${shareDisk.totalMemory}]]bytes</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel blue-bg">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <i class="fa fa-tag"></i>
+                            </div>
+                            <div class="col-xs-8">
+                                <span class="state-title">  已使用空间  </span>
+                                <h4>[[${shareDisk.usedMemory}]]bytes</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel green-bg">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <i class="fa fa-gavel"></i>
+                            </div>
+                            <div class="col-xs-8">
+                                <span class="state-title">  剩余空间  </span>
+                                <h4>[[${shareDisk.leftMemory}]]bytes</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel yellow-bg">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <i class="fa fa-eye"></i>
+                            </div>
+                            <div class="col-xs-8">
+                                <span class="state-title">  文件数量  </span>
+                                <h4>[[${shareDisk.fileCount}]]</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!--body wrapper end-->
+
+        <!--文件列表 start-->
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            用户表
+
+                            <span class="tools pull-right">
+                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                <a href="javascript:;" class="fa fa-times"></a>
+             </span>
+                        </header>
+                        <div class="panel-body">
+                            <div class="adv-table">
+                                <table  class="display table table-bordered table-striped" id="dynamic-table">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>用户名称</th>
+                                        <th>文件名称</th>
+                                        <th>文件大小</th>
+                                        <th>备用2</th>
+                                        <th>用户操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="gradeX"  th:each="userFile,stat:${filelist}">
+                                        <td th:text="${stat.count}">#</td>
+                                        <td th:text="${userFile.username}">name</td>
+                                        <td th:text="${userFile.filename}">eamil</td>
+                                        <td th:text="${userFile.size}">备用1</td>
+                                        <td>备用2</td>
+                                        <td>
+
+<!--                                            <a th:href="@{/userFile/delete/{id}(id = ${userFile.id})}" class="btn btn-danger btn-sm" type="button">删除</a>-->
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>用户名称</th>
+                                        <th>文件名称</th>
+                                        <th>文件大小</th>
+                                        <th>备用2</th>
+                                        <th>用户操作</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!--文件列表 end-->
+
+
+        <!--footer section start-->
+        <div th:replace="common :: footermenu"></div>
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->
+
+</section>
+
+<div th:include="common :: commonscript"></div>
+
+<!--easy pie chart-->
+<script src="js/easypiechart/jquery.easypiechart.js"></script>
+<script src="js/easypiechart/easypiechart-init.js"></script>
+
+<!--Sparkline Chart-->
+<script src="js/sparkline/jquery.sparkline.js"></script>
+<script src="js/sparkline/sparkline-init.js"></script>
+
+<!--icheck -->
+<script src="js/iCheck/jquery.icheck.js"></script>
+<script src="js/icheck-init.js"></script>
+
+<!-- jQuery Flot Chart-->
+<script src="js/flot-chart/jquery.flot.js"></script>
+<script src="js/flot-chart/jquery.flot.tooltip.js"></script>
+<script src="js/flot-chart/jquery.flot.resize.js"></script>
+<script src="js/flot-chart/jquery.flot.pie.resize.js"></script>
+<script src="js/flot-chart/jquery.flot.selection.js"></script>
+<script src="js/flot-chart/jquery.flot.stack.js"></script>
+<script src="js/flot-chart/jquery.flot.time.js"></script>
+<script src="js/main-chart.js"></script>
+
+
+
+
+</body>
+</html>
