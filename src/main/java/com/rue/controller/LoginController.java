@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import javax.servlet.http.HttpSession;
@@ -122,6 +123,21 @@ public class LoginController {
     @GetMapping("/uploadShare")
     public String uploadShare(){
         return "uploadShareFile";
+    }
+
+
+    @GetMapping("/form_layouts")
+    public String form_layouts(){
+        return "form_layouts";
+    }
+
+    @RequestMapping("/updateSpace")
+    public String updateSpace(String totalMemory){
+
+        log.info(String.valueOf(totalMemory));
+
+
+        return "form_layouts";
     }
 
 

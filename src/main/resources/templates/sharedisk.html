@@ -8,7 +8,7 @@
   <meta name="author" content="ThemeBucket">
   <link rel="shortcut icon" href="#" type="image/png">
 
-  <title>AdminX</title>
+  <title>共享网盘</title>
 
   <!--icheck-->
   <link href="js/iCheck/skins/minimal/minimal.css" rel="stylesheet">
@@ -141,6 +141,7 @@
                                         <td>
 
 <!--                                            <a th:href="@{/userFile/delete/{id}(id = ${userFile.id})}" class="btn btn-danger btn-sm" type="button">删除</a>-->
+                                            <a th:href="@{/sharediskfiles/download/{id}(id = ${userFile.id})}"  class="btn btn-primary" type="button">下载</a>
                                             <a th:href="@{/sharediskfiles/delete/{id}(id = ${userFile.id})}" class="btn btn-danger btn-sm" type="button">删除</a>
 
                                         </td>

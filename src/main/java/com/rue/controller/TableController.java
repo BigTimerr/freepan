@@ -35,10 +35,10 @@ public class TableController {
     @GetMapping("/user/delete/{id}")
     public String deleteUser(@PathVariable("id") int id, Model model, RedirectAttributes redirectAttributes){
         if (id ==1){
-            return "redirect:dynamic_table";
+            return "redirect:/user_table";
         }
         userService.removeById(id);
         //这里一定是重定向！！！！
-        return "redirect:/dynamic_table";
+        return "redirect:/user_table";
     }
 }
