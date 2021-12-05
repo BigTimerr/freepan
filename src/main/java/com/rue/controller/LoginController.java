@@ -2,6 +2,7 @@ package com.rue.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.rue.bean.User;
 import com.rue.bean.UserFile;
 import com.rue.mapper.UserMapper;
@@ -12,12 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+
+import static java.lang.Long.parseLong;
 
 /**
  * @author ruetrash
@@ -131,14 +135,40 @@ public class LoginController {
         return "form_layouts";
     }
 
-    @RequestMapping("/updateSpace")
-    public String updateSpace(String totalMemory){
+    @RequestMapping("/updateSpace/{id}")
+    public String updateSpace(String totalMemory, @PathVariable("id") int id,HttpSession session){
 
         log.info(String.valueOf(totalMemory));
+        log.info(String.valueOf(id));
+
+        long memory = parseLong(String.valueOf(totalMemory));
+
+        // 得到被修改的用户
+        UpdateWrapper<User> wrapper = new UpdateWrapper<>();
+        wrapper.eq("id",id);
+        User user = userService.getOne(wrapper);
 
 
-        return "form_layouts";
+        // 判断这个用户的一使用空间是否大于被修改的空间
+        if (memory <= user.getUsedMemory()){
+            return "redirect:/user_table";
+        }
+        user.setTotalMemory(memory);
+        user.setLeftMemory(user.getTotalMemory()-user.getUsedMemory());
+
+        // 如果这个用户是管理元，就修改一下session
+        if ("admin".equals(user.getUsername()))
+        {
+            session.setAttribute("loginUser",user);
+        }
+
+        // 更新数据库
+        userService.saveOrUpdate(user,wrapper);
+
+
+        return "redirect:/user_table";
     }
+
 
 
     //退出登录
