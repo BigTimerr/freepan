@@ -50,7 +50,16 @@
                             </div>
                             <div class="col-xs-8">
                                 <span class="state-title"> 云盘总空间 </span>
-                                <h4>[[${shareDisk.totalMemory}]]bytes</h4>
+                                <h4>
+                                    <p id="totalMemory"></p>
+                                    <script>
+                                        var s = [[${shareDisk.totalMemory}]];
+                                        s = parseInt(s, 10);
+                                        s = s/1024/1024;
+                                        s = s.toFixed(2)
+                                        document.getElementById("totalMemory").innerHTML = s+"MB";
+                                    </script>
+                                </h4>
                             </div>
                         </div>
                     </div>
@@ -65,7 +74,17 @@
                             </div>
                             <div class="col-xs-8">
                                 <span class="state-title">  已使用空间  </span>
-                                <h4>[[${shareDisk.usedMemory}]]bytes</h4>
+                                <h4>
+                                    <p id="usedMemory"></p>
+                                    <script>
+                                        var s = [[${shareDisk.usedMemory}]];
+                                        s = parseInt(s, 10);
+                                        s = s/1024/1024;
+                                        s = s.toFixed(2)
+                                        document.getElementById("usedMemory").innerHTML = s+"MB";
+                                    </script>
+
+                                </h4>
                             </div>
                         </div>
                     </div>
@@ -80,7 +99,17 @@
                             </div>
                             <div class="col-xs-8">
                                 <span class="state-title">  剩余空间  </span>
-                                <h4>[[${shareDisk.leftMemory}]]bytes</h4>
+                                <h4>
+                                    <p id="leftMemory"></p>
+                                    <script>
+                                        var s = [[${shareDisk.leftMemory}]];
+                                        s = parseInt(s, 10);
+                                        s = s/1024/1024;
+                                        s = s.toFixed(2)
+                                        document.getElementById("leftMemory").innerHTML = s+"MB";
+                                    </script>
+
+                                </h4>
                             </div>
                         </div>
                     </div>

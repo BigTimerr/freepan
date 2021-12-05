@@ -61,7 +61,7 @@
             <th>#</th>
             <th>用户名称</th>
             <th>邮箱</th>
-            <th>备用1</th>
+            <th>存储空间大小</th>
             <th>备用2</th>
             <th>用户操作</th>
         </tr>
@@ -71,7 +71,7 @@
             <td th:text="${stat.count}">#</td>
             <td th:text="${user.username}">username</td>
             <td th:text="${user.email}">eamil</td>
-            <td>备用1</td>
+            <td th:text="${user.totalMemory}"></td>
             <td>备用2</td>
             <td>
                 <a th:href="@{/user/delete/{id}(id = ${user.id})}" class="btn btn-danger btn-sm" type="button">删除</a>
@@ -84,7 +84,7 @@
             <th>#</th>
             <th>用户名称</th>
             <th>邮箱</th>
-            <th>备用1</th>
+            <th>存储空间大小</th>
             <th>备用2</th>
             <th>用户操作</th>
         </tr>
